@@ -5,13 +5,16 @@ $links = [
     ['text' => 'Submit Article', 'url' => '../submit.php'],
     ['text' => 'Update Article', 'url' => '../update.php'],
 ];
-
+$links_2 = [
+    ['text' => 'Home', 'url' => '/'],
+    ['text' => 'Dashboard', 'url' => '../auth/dashboard.php'],
+];
 if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin') {
     $admin_links = [
         ['text' => 'Submit Article', 'url' => '../submit.php'],
         ['text' => 'Update Article', 'url' => '../update.php'],
     ];
-    $links = array_merge($links, $admin_links);
+    $links_2 = array_merge($links, $admin_links);
 }
 
 if (isset($_SESSION['user_id'])) {
