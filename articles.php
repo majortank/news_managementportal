@@ -35,6 +35,9 @@ $categories_sql = "SELECT category, COUNT(*) AS count FROM Articles GROUP BY cat
 $categories_result = mysqli_query($conn, $categories_sql);
 echo "<div style=margin-top: 80px;'  class='btn-group'>";
 echo "<a href='?page=1' class='btn btn-secondary'>All (" . $total_results . ")</a>";
+if (!$result) {
+    die('Error executing query: ' . mysqli_error($conn));
+}
 while ($categories_row = mysqli_fetch_assoc($categories_result)) {
     echo "<a href='?page=1&category=" . $categories_row['category'] . "' class='btn btn-secondary'>" . $categories_row['category'] . " (" . $categories_row['count'] . ")</a>";
 }
@@ -47,6 +50,9 @@ echo "</div>";
 
 // display articles
 echo '<div class="card-deck row" style="margin-top: 50px;">';
+if (!$result) {
+    die('Error executing query: ' . mysqli_error($conn));
+}
 while ($row = mysqli_fetch_assoc($result)) {
 echo '  <div class="col-sm-6">';
 echo '    <div class="card" style="margin-top: 5px;">';
