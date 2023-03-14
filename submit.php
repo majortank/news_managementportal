@@ -1,7 +1,7 @@
 <?php session_start();
 // Redirect to sign-in page if user is not logged in
 if (!isset($_SESSION['user_id'])) {
-    header('Location: signin.php');
+    header('Location: ./auth/signin.php');
     exit();
 }
 
