@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "nmp_user";
-$password = "Tan123C++";
+$password = "";
 $dbname = "news_management-portal";
 
 // Create connection
