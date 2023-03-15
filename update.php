@@ -35,7 +35,7 @@ if (!isset($_SESSION['user_id'])) {
 						$dbhost = 'localhost';
 						$dbname = 'news_management-portal';
 						$dbuser = 'nmp_user';
-						$dbpass = '';
+						$dbpass = 'Tan123C++';
 						$db = new PDO("mysql:host=$dbhost;dbname=$dbname;charset=utf8", $dbuser, $dbpass);
 
 						// Fetch article list
