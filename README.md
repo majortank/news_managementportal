@@ -1,5 +1,5 @@
 # news_managementportal
-News Management Portal using HTML CSS JS PHPMySQL
+News Management Portal using HTML CSS JS PHPMySQL - Full Stack - LAMP
 Back-End
 1. Ability to store news articles in the database.
 2. News articles need to be categorized and sub-categorized.
@@ -8,8 +8,6 @@ Back-End
 5. Users must submit their articles.
 6. Once submitted the administrator must approve or disapprove the article.
 7. Only the administrator can delete an article.
-
-Front-End
 8. Only approved articles must be displayed when viewing the website.
 9. You must have a simple easy-to-follow navigation.
 10. Guests must be able to view latest articles.
