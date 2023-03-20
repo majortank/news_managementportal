@@ -10,8 +10,7 @@ if (!isset($_SESSION['user_id'])) {
 
 // Redirect to home page if user is a regular user
 if ($_SESSION['user_role'] === 'user') {
-    echo '<div class="alert alert-danger" role="alert">Sorry, you\'re not an admin!</div>';
-    header('Refresh: 3; URL=../index.php'); // Refresh the page and redirect after 3 seconds
+    header('Refresh: 0; URL=./notadmin.php'); // Refresh the page and redirect after 3 seconds
     exit();
 }
 ?>
