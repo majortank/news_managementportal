@@ -63,12 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "INSERT INTO Articles (title, author, content, category, subcategory, publish_date, source_url) VALUES ('$title', '$author', '$content', '$category', '$subcategory', '$publish_date', '$source_url')";
 
         if (mysqli_query($conn, $sql)) {
-            echo'<div class="alert alert-success" role="alert">';
-            echo '    <h4 class="alert-heading">Well done!</h4>';
-            echo'    <p>Aww yeah, you successfully created an article</p>';
-            echo'    <hr>';
-            echo'    <p class="mb-0">Whenever you need to, be sure to be patient as it waiting tobe approved.</p>';
-            echo'  </div>';
+            header('Refresh: 0; URL=./articleSubmitted.php');
         } else {
             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
         }

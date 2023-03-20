@@ -10,7 +10,7 @@ $sql = "UPDATE articles SET status = 1 WHERE article_id = $article_id";
 mysqli_query($conn, $sql);
 
 // redirect back to the articles page
-header("Location: articles.php");
+header("Location: ../auth/dashboard.php");
 exit();
 
 ?>
