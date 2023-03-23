@@ -26,6 +26,7 @@ $row = $result->fetch_assoc();
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
 </head>
 <body>
     <header>
@@ -35,10 +36,22 @@ $row = $result->fetch_assoc();
         <div class="container">
     <h1 class="mt-5"><?php echo $row['title']; ?></h1>
     <p class="lead">By <?php echo $row['author']; ?></p>
-    <img src="<?php echo $row['source_url']; ?>" class="img-fluid" alt="<?php echo $row['title']; ?>">
+    <img src="<?php echo $row['source_url']; ?>" style="height: 200px; width:100%" class="img-fluid" alt="<?php echo $row['title']; ?>">
     <hr>
     <p class="text-muted">Published on <?php echo $row['publish_date']; ?></p>
-    <p><?php echo $row['content']; ?></p>
+    <div id="content">
+        <?php
+  $content = $row['content'];
+  if (!preg_match('/<[^>]+>/', $content)) {
+    // Add <p> tags around the content
+    $content = '<p>' . $content . '</p>';
+}
+  $decoded_text = htmlspecialchars_decode($content);
+echo $decoded_text;
+  
+//  echo $sanitizedContent;
+?>
+    </div>
     <p class="text-muted">Category: <?php echo $row['category']; ?> > <?php echo $row['subcategory']; ?></p>
   </div>
     </main>

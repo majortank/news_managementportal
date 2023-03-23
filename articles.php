@@ -3,7 +3,7 @@
 require 'connect.php';
 
 // set pagination variables
-$results_per_page = 10;
+$results_per_page = 6;
 $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
 $offset = ($current_page - 1) * $results_per_page;
 
@@ -87,7 +87,23 @@ while ($row = mysqli_fetch_assoc($result)) {
     echo '<img height="250" width="300" src="' . $source_url . '" class="card-img-top" alt="">';
     echo '<div class="card-body">';
     echo '<h5 class="card-title">' . $title . '</h5>';
-    echo '<p class="card-text">' . substr($content, 0, 100) . '...</p>';
+
+         if (!preg_match('/<[^>]+>/', $content)) {
+    // Add <p> tags around the content
+    $content = '<p class="card-text">' . $content . '</p>';
+    }
+    $stripped_content = strip_tags($content);
+    $excerpt = mb_substr($stripped_content, 0, 500);
+    if(mb_strlen($stripped_content) > 100){
+        $excerpt .= '...';
+    }
+    $sanitizedContent = htmlspecialchars_decode($excerpt);  
+    echo '<p class="card-text">' . $sanitizedContent . '</p>';
+
+
+    
+    
+  
     echo '<p class="card-text"><small class="text-muted">By ' . $author . ' | ' . $publish_date . '</small></p>';
     echo '<a href="article.php?id=' . $article_id . '" class="btn btn-primary">Read More</a>';
     echo '</div>';

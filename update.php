@@ -17,6 +17,14 @@ if (!isset($_SESSION['user_id'])) {
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.tiny.cloud/1/rxyn6wmdmdgti4121cht97ol9sfzh3vrprt10lpygd8hmk8j/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+  tinymce.init({
+    selector: 'textarea',
+    plugins: 'advlist autolink lists link',
+    toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent'
+  });
+</script>
 </head>
 <body>
     <header>
@@ -32,9 +40,9 @@ if (!isset($_SESSION['user_id'])) {
 					<option value="">Select an article</option>
 					<?php
 						// Connect to database using PDO
-						$dbhost = 'localhost';
-						$dbname = 'news_management-portal';
-						$dbuser = 'nmp_user';
+						$dbhost = 'nmpserve.mysql.database.azure.com';
+						$dbname = 'nmpdb';
+						$dbuser = 'nmp_user@nmpserve';
 						$dbpass = 'Tan123C++';
 						$db = new PDO("mysql:host=$dbhost;dbname=$dbname;charset=utf8", $dbuser, $dbpass);
 
@@ -71,6 +79,7 @@ if (!isset($_SESSION['user_id'])) {
 					<div class="form-group">
 						<label for="content">Content:</label>
 						<textarea class="form-control" id="content" name="content"><?php echo $article['content']; ?></textarea>
+                                                
 					</div>
 					<div class="form-group">
 						<label for="category">Category:</label>
@@ -105,8 +114,6 @@ if (!isset($_SESSION['user_id'])) {
 //			header("Location: " . $_SERVER["PHP_SELF"]);
                         ob_end_flush();
 		}
-            
-
 	?>
     </main>
 </body>
