@@ -12,9 +12,9 @@ header("Content-Type: application/rss+xml; charset=utf-8");
 echo '<?xml version="1.0" encoding="UTF-8"?>';
 echo '<rss version="2.0">';
 echo '<channel>';
-echo '<title>Your Website Name</title>';
-echo '<link>http://www.yourwebsite.com</link>';
-echo '<description>Latest news and updates from Your Website Name</description>';
+echo '<title>News Management Portal</title>';
+echo '<link>http://www.nmp.com</link>';
+echo '<description>Latest news and updates from News Manament Portal</description>';
 
 while ($row = mysqli_fetch_assoc($result)) {
     $title = htmlspecialchars($row['title']);

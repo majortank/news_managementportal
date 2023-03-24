@@ -4,11 +4,11 @@ require 'connect.php';
 
 // set pagination variables
 $results_per_page = 6;
-$current_page = isset($_GET['page']) ? $_GET['page'] : 1;
+$current_page = filter_input(INPUT_GET, 'page', FILTER_SANITIZE_NUMBER_INT) ?: 1;
 $offset = ($current_page - 1) * $results_per_page;
 
 // set filter variable
-$filter = isset($_GET['category']) ? $_GET['category'] : '';
+$filter = filter_input(INPUT_GET, 'category', FILTER_SANITIZE_STRING);
 
 // build query based on filter
 if ($filter) {

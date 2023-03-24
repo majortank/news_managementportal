@@ -82,15 +82,17 @@ while ($row = mysqli_fetch_assoc($result)) {
   echo '<td>' . ($row['status'] == 1 ? "Approved" : "Not Approved") . '</td>';
   echo '<td>';
   if ($row['status'] == 0) {
-    echo '<a href="../functions/approve_article.php?id=' . $row['article_id'] . '" class="btn btn-success btn-sm mr-4">Approve</a>';
+    echo '<a href="../functions/approve_article.php?id=' . $row['article_id'] . '" class="btn btn-success btn-sm mr-2">Approve</a>';
   } else {
-    echo 'Approved';
+    echo '<a href="../functions/disapprove_article.php?id=' . $row['article_id'] . '" class="btn btn-warning btn-sm mr-2">Disapprove</a>';
+
   }
   echo '<a href="../functions/view_article.php?id=' . $row['article_id'] . '" class="btn btn-primary btn-sm mr-2">View</a>';
   echo '<a href="../functions/delete_article.php?id=' . $row['article_id'] . '" class="btn btn-danger btn-sm">Delete</a>';
   echo '</td>';
   echo '</tr>';
 }
+
 
 echo '</tbody>';
 echo '</table>';
